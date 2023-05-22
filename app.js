@@ -1,5 +1,5 @@
 let count = 0;
-const paragraph = document.getElementById("num");
+let paragraph = document.getElementById("num","cart");
 let incBtn = document.getElementById("plus-btn");
 let decBtn = document.getElementById("minus-btn");
 let addToCart = document.getElementById("addtocart");
