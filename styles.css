@@ -45,12 +45,12 @@ header {
   padding: 16px;
   color: white;
 }
- #cart { 
+#cart {
   display: flex;
   justify-content: end;
- }
+}
 
- a {
+a {
   color: white;
   text-decoration: none;
 }
@@ -75,6 +75,34 @@ header {
   gap: 16px;
 }
 
+.checkout-form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
 
+.checkout-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 400px;
+  align-items: center;
+  border-bottom: 2px solid grey;
+  margin-bottom: 16px;
+  margin-top: 20px;
+}
 
+.checkout-img {
+  width: 50px;
+  height: 50px;
+}
 
+tr, th {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.checkout-heading p {
+  color: green;
+  padding-left: 70px;
+}

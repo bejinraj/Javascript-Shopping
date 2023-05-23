@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>checkout</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cart</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Checkout</h2>
+      <a href="index.html"><p id="cart">Back to Cart</p></a>
+    </header>
+
+    <aside class="checkout-form">
+      <div class="checkout-heading">
+        <h3>Your Order</h3>
+        <!-- <button class="btn edit-btn">Edit</button> -->
+      </div>
+
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+        <tbody id="table-detail">
+          
+        </tbody>
+      </table>
+      <div class="checkout-heading">
+        <h2>Grand Total</h2>
+        <p id="grand-total"></p>
+      </div>
+      <button class="btn" id="checkout">checkout</button>
+      
+    </aside>
+
+    <!-- script -->
+    <script type="module" src="checkout.js"></script>
+  </body>
 </html>
