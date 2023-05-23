@@ -37,13 +37,22 @@ img {
   margin-bottom: 16px;
 }
 
-.head {
-  display: flex;
+header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   background-color: #4cb5f9;
-  justify-content: end;
   margin-bottom: 16px;
   padding: 16px;
   color: white;
+}
+ #cart { 
+  display: flex;
+  justify-content: end;
+ }
+
+ a {
+  color: white;
+  text-decoration: none;
 }
 
 .content {
