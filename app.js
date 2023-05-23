@@ -1,37 +1,75 @@
-let count = 0;
-let paragraph = document.getElementById("num");
+let pizzaCartCount = 0;
+let burgerCartCount = 0;
 let cart = document.getElementById("cart");
-let incBtn = document.getElementById("plus-btn");
-let decBtn = document.getElementById("minus-btn");
-let addToCart = document.getElementById("addtocart");
-let add = document.getElementById("count");
 
-add.style.display = "none";
-cart.innerHtml= "Cart";
+let pizzaCount = document.getElementById("pizza-count");
+let pizzaPlusBtn = document.getElementById("pizza-plus-btn");
+let pizzaMinusBtn = document.getElementById("pizza-minus-btn");
+let pizzaAddToCart = document.getElementById("pizza-addtocart");
+let pizzaBlock = document.getElementById("pizza-block");
 
-incBtn.addEventListener("click", () => {
-  count = count + 1;
-  paragraph.innerHTML = count;
-  cart.innerHTML = `Cart ${count}`;
+let burgerCount = document.getElementById("burger-count");
+let burgerPlusBtn = document.getElementById("burger-plus-btn");
+let burgerMinusBtn = document.getElementById("burger-minus-btn");
+let burgerAddToCart = document.getElementById("burger-addtocart");
+let burgerBlock = document.getElementById("burger-block");
+
+window.addEventListener("load", () => {
+  burgerBlock.style.display = "none";
+  pizzaBlock.style.display = "none";
+  cart.innerHtml = "Cart";
 });
 
-decBtn.addEventListener("click", () => {
-  if (count > 0) {
-    count = count - 1;
-    paragraph.innerHTML = count;
-    cart.innerHTML = `Cart ${count}`;
-    if (count === 0) {
-      addToCart.style.display = "block";
-      add.style.display = "none";
+pizzaPlusBtn.addEventListener("click", () => {
+  pizzaCartCount = pizzaCartCount + 1;
+  pizzaCount.innerHTML = pizzaCartCount;
+  cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
+});
+
+pizzaMinusBtn.addEventListener("click", () => {
+  if (pizzaCartCount > 0) {
+    pizzaCartCount = pizzaCartCount - 1;
+    pizzaCount.innerHTML = pizzaCartCount;
+    cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
+    if (pizzaCartCount === 0) {
+      pizzaAddToCart.style.display = "block";
+      pizzaBlock.style.display = "none";
       cart.innerHTML = "Cart";
     }
   }
 });
 
-addToCart.addEventListener("click", () => {
-  count = count + 1;
-  paragraph.innerHTML = count;
-  cart.innerHTML = `Cart ${count}`;
-  addToCart.style.display = "none";
-  add.style.display = "flex";
+pizzaAddToCart.addEventListener("click", () => {
+  pizzaCartCount = pizzaCartCount + 1;
+  pizzaCount.innerHTML = pizzaCartCount;
+  cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
+  pizzaAddToCart.style.display = "none";
+  pizzaBlock.style.display = "flex";
+});
+
+burgerPlusBtn.addEventListener("click", () => {
+  burgerCartCount = burgerCartCount + 1;
+  burgerCount.innerHTML = burgerCartCount;
+  cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
+});
+
+burgerMinusBtn.addEventListener("click", () => {
+  if (burgerCartCount > 0) {
+    burgerCartCount = burgerCartCount - 1;
+    burgerCount.innerHTML = burgerCartCount;
+    cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
+    if (burgerCartCount === 0) {
+      burgerAddToCart.style.display = "block";
+      burgerBlock.style.display = "none";
+      cart.innerHTML = "Cart";
+    }
+  }
+});
+
+burgerAddToCart.addEventListener("click", () => {
+  burgerCartCount = burgerCartCount + 1;
+  burgerCount.innerHTML = burgerCartCount;
+  cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
+  burgerAddToCart.style.display = "none";
+  burgerBlock.style.display = "flex";
 });
