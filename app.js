@@ -1,75 +1,78 @@
-let pizzaCartCount = 0;
-let burgerCartCount = 0;
+import products from "./data.js";
+
+let productsDiv = document.getElementById("products");
 let cart = document.getElementById("cart");
 
-let pizzaCount = document.getElementById("pizza-count");
-let pizzaPlusBtn = document.getElementById("pizza-plus-btn");
-let pizzaMinusBtn = document.getElementById("pizza-minus-btn");
-let pizzaAddToCart = document.getElementById("pizza-addtocart");
-let pizzaBlock = document.getElementById("pizza-block");
+let cartCount = 0;
 
-let burgerCount = document.getElementById("burger-count");
-let burgerPlusBtn = document.getElementById("burger-plus-btn");
-let burgerMinusBtn = document.getElementById("burger-minus-btn");
-let burgerAddToCart = document.getElementById("burger-addtocart");
-let burgerBlock = document.getElementById("burger-block");
+for (let product of products) {
+  let cards = `
+      <div class="container">
+        <div>
+          <img src="${product.url}" alt="food-products-img"/>
+          <p class="content product">${
+            product.name.charAt(0).toUpperCase() + product.name.slice(1)
+          }</p>
+          <p class="content price">₹ ${product.price}</p>
+        </div>
+        <div class="card">
+          <div class="count" id="${product.name}-block">
+            <button id="${product.name}-minus-btn" class="btn">-</button>
+            <p id="${product.name}-count">0</p>
+            <button id="${product.name}-plus-btn" class="btn">+</button>
+          </div>
+          <button class="btn addToCart-btn" id="${
+            product.name
+          }-addtocart">Add to cart</button>
+        </div>
+      </div>
+    `;
 
-window.addEventListener("load", () => {
-  burgerBlock.style.display = "none";
-  pizzaBlock.style.display = "none";
-  cart.innerHtml = "Cart";
-});
+  productsDiv.innerHTML += cards;
+}
 
-pizzaPlusBtn.addEventListener("click", () => {
-  pizzaCartCount = pizzaCartCount + 1;
-  pizzaCount.innerHTML = pizzaCartCount;
-  cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
-});
+for (let product of products) {
+  let productCount = 0;
 
-pizzaMinusBtn.addEventListener("click", () => {
-  if (pizzaCartCount > 0) {
-    pizzaCartCount = pizzaCartCount - 1;
-    pizzaCount.innerHTML = pizzaCartCount;
-    cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
-    if (pizzaCartCount === 0) {
-      pizzaAddToCart.style.display = "block";
-      pizzaBlock.style.display = "none";
-      cart.innerHTML = "Cart";
+  let count = document.getElementById(`${product.name}-count`);
+  let plusBtn = document.getElementById(`${product.name}-plus-btn`);
+  let minusBtn = document.getElementById(`${product.name}-minus-btn`);
+  let addToCart = document.getElementById(`${product.name}-addtocart`);
+  let block = document.getElementById(`${product.name}-block`);
+
+  window.addEventListener("load", () => {
+    block.style.display = "none";
+    cart.innerHtml = "Cart";
+  });
+
+  addToCart.addEventListener("click", () => {
+    cartCount = cartCount + 1;
+    productCount = productCount + 1;
+    count.innerHTML = productCount;
+    cart.innerHTML = `Cart ${cartCount}`;
+    addToCart.style.display = "none";
+    block.style.display = "flex";
+  });
+
+  plusBtn.addEventListener("click", () => {
+    cartCount = cartCount + 1;
+    productCount = productCount + 1;
+    count.innerHTML = productCount;
+    cart.innerHTML = `Cart ${cartCount}`;
+  });
+
+  minusBtn.addEventListener("click", () => {
+    if (productCount > 0) {
+      cartCount = cartCount - 1;
+      productCount = productCount - 1;
+      count.innerHTML = productCount;
+      cart.innerHTML = `Cart ${cartCount}`;
+      if (productCount === 0) {
+        addToCart.style.display = "block";
+        block.style.display = "none";
+      }
     }
-  }
-});
+    cart.innerHTML = `Cart ${cartCount > 0 ? cartCount : ""}`;
+  });
+}
 
-pizzaAddToCart.addEventListener("click", () => {
-  pizzaCartCount = pizzaCartCount + 1;
-  pizzaCount.innerHTML = pizzaCartCount;
-  cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
-  pizzaAddToCart.style.display = "none";
-  pizzaBlock.style.display = "flex";
-});
-
-burgerPlusBtn.addEventListener("click", () => {
-  burgerCartCount = burgerCartCount + 1;
-  burgerCount.innerHTML = burgerCartCount;
-  cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
-});
-
-burgerMinusBtn.addEventListener("click", () => {
-  if (burgerCartCount > 0) {
-    burgerCartCount = burgerCartCount - 1;
-    burgerCount.innerHTML = burgerCartCount;
-    cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
-    if (burgerCartCount === 0) {
-      burgerAddToCart.style.display = "block";
-      burgerBlock.style.display = "none";
-      cart.innerHTML = "Cart";
-    }
-  }
-});
-
-burgerAddToCart.addEventListener("click", () => {
-  burgerCartCount = burgerCartCount + 1;
-  burgerCount.innerHTML = burgerCartCount;
-  cart.innerHTML = `Cart ${pizzaCartCount + burgerCartCount}`;
-  burgerAddToCart.style.display = "none";
-  burgerBlock.style.display = "flex";
-});

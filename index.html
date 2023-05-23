@@ -15,54 +15,10 @@
         <p id="cart">Cart</p>
       </div>
 
-      <div class="products">
-        <!-- card one -->
-        <div class="container">
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=428&q=80"
-            />
-            <p class="content product">Pizza</p>
-            <p class="content price">₹120</p>
-          </div>
-          <div class="card">
-            <div class="count" id="pizza-block">
-              <button id="pizza-minus-btn" class="btn">-</button>
-              <p id="pizza-count">0</p>
-              <button id="pizza-plus-btn" class="btn">+</button>
-            </div>
-
-            <!-- add to cart-->
-            <button class="btn" id="pizza-addtocart">Add to cart</button>
-          </div>
-        </div>
-        <!-- card one end -->
-
-        <!-- card two start -->
-        <div class="container">
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=699&q=80"
-            />
-            <p class="content product">Burger</p>
-            <p class="content price">₹100</p>
-          </div>
-          <div class="card">
-            <div class="count" id="burger-block">
-              <button id="burger-minus-btn" class="btn">-</button>
-              <p id="burger-count">0</p>
-              <button id="burger-plus-btn" class="btn">+</button>
-            </div>
-
-            <!-- add to cart-->
-            <button class="btn" id="burger-addtocart">Add to cart</button>
-          </div>
-        </div>
-        <!-- card two end -->
-      </div>
+      <div id="products" class="products"></div>
     </div>
 
     <!-- script -->
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
